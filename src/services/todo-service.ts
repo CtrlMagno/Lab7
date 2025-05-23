@@ -55,10 +55,14 @@ export class TodoService {
                 orderBy('createdAt', 'desc')
             );
             const querySnapshot = await getDocs(q);
-            return querySnapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            } as Todo));
+            return querySnapshot.docs.map(doc => {
+                const data = doc.data();
+                return {
+                    id: doc.id,
+                    ...data,
+                    createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt
+                } as Todo;
+            });
         } catch (error: any) {
             if (error.message.includes('requires an index')) {
                 console.error('Please create the required index in Firebase Console:', error.message);
@@ -69,10 +73,14 @@ export class TodoService {
                     where('userId', '==', userId)
                 );
                 const querySnapshot = await getDocs(q);
-                const todos = querySnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                } as Todo));
+                const todos = querySnapshot.docs.map(doc => {
+                    const data = doc.data();
+                    return {
+                        id: doc.id,
+                        ...data,
+                        createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : data.createdAt
+                    } as Todo;
+                });
                 // Sort in memory as a temporary solution
                 return todos.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
             }
