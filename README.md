@@ -1,43 +1,153 @@
-# Web Components Firebase App
+# Todo App with Firebase Authentication
 
-A modern web application built with Web Components, TypeScript, and Firebase.
+A modern, secure todo application built with Firebase Authentication and Firestore. This application allows users to manage their tasks with a beautiful and responsive interface.
 
-## Prerequisites
+## Features
 
-- Node.js (v14 or higher)
-- npm (v6 or higher)
+### Authentication
+- **Secure User Authentication**
+  - Email and password authentication
+  - User registration and login
+  - Secure password requirements
+  - Session management
+  - Automatic sign-out handling
 
-## Setup
+- **Enhanced Security Features**
+  - Rate limiting for failed login attempts
+  - Password strength validation
+  - Email format validation
+  - Protection against brute force attacks
+  - Secure error handling
+
+- **User-Friendly Error Handling**
+  - Clear and specific error messages
+  - Visual feedback for errors
+  - Remaining attempts counter
+  - Helpful suggestions for common issues
+  - Smooth error animations
+
+### Todo Management
+- **User-Specific Todos**
+  - Each user can only see and manage their own todos
+  - Secure data isolation between users
+  - Real-time updates for todo changes
+
+- **Todo Operations**
+  - Add new todos
+  - Mark todos as complete/incomplete
+  - Delete todos
+  - View todo history
+  - Sort todos by creation date
+
+### User Interface
+- **Modern Design**
+  - Clean and intuitive interface
+  - Responsive layout for all devices
+  - Smooth animations and transitions
+  - Error state visualizations
+  - Loading indicators
+
+- **Form Validation**
+  - Real-time input validation
+  - Visual feedback for errors
+  - Clear error messages
+  - Field-specific error highlighting
+  - Password strength indicators
+
+## Technical Features
+
+### Security
+- Firebase Authentication integration
+- Secure password storage
+- Rate limiting for failed attempts
+- Input validation and sanitization
+- Protected routes and operations
+
+### Data Management
+- Firestore database integration
+- Real-time data synchronization
+- User-specific data isolation
+- Efficient data queries
+- Optimized data structure
+
+### Error Handling
+- Comprehensive error messages
+- User-friendly error display
+- Graceful error recovery
+- Network error handling
+- Authentication error management
+
+## Getting Started
 
 1. Clone the repository
 2. Install dependencies:
    ```bash
    npm install
    ```
-3. Configure Firebase:
-   - Create a new Firebase project at https://console.firebase.google.com/
-   - Copy your Firebase configuration from the project settings
-   - Replace the placeholder configuration in `src/index.ts` with your Firebase config
+3. Set up Firebase:
+   - Create a Firebase project
+   - Enable Authentication and Firestore
+   - Add your Firebase configuration to `src/index.ts`
 
-## Development
+4. Run the development server:
+   ```bash
+   npm start
+   ```
 
-To start the development server:
+## Firebase Setup
 
-```bash
-npm start
-```
+1. Create a new Firebase project
+2. Enable Email/Password authentication
+3. Set up Firestore database
+4. Create the required indexes:
+   - Collection: `todos`
+   - Fields: 
+     - `userId` (Ascending)
+     - `createdAt` (Descending)
 
-The application will be available at `http://localhost:9000`
+## Security Features
 
-## Building for Production
+### Authentication Security
+- Rate limiting after 3 failed attempts
+- 30-second cooldown period
+- Password strength requirements
+- Email format validation
+- Session management
 
-To create a production build:
+### Data Security
+- User-specific data access
+- Secure data operations
+- Protected API endpoints
+- Input validation
+- Error handling
 
-```bash
-npm run build
-```
+## Error Handling
 
-The built files will be in the `dist` directory.
+The application includes comprehensive error handling for:
+- Authentication errors
+- Network issues
+- Invalid inputs
+- Database operations
+- Rate limiting
+
+Each error provides:
+- Clear error messages
+- Visual feedback
+- User guidance
+- Recovery suggestions
+- Security measures
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Project Structure
 
